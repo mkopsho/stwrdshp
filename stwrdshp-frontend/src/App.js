@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import About from './components/About'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
-import Parks from './components/Parks'
+import ParksContainer from './components/ParksContainer'
 
 // Test fetch to check backend connectivity
 // function testFetch() {
@@ -26,7 +26,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/parks" component={Parks} />
+          <Route exact path="/parks" component={ParksContainer} />
         </Switch>
       </div>
     </Router>

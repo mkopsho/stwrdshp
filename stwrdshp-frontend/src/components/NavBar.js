@@ -1,11 +1,11 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom' // decide on one (`Link` or `NavLink`) and stick with it!
 
 const NavBar = () => {
   return (
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
         <Link to="/about">About</Link>

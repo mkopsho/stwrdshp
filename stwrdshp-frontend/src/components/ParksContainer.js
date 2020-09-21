@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ParkCard from './ParkCard'
+import ParkSearch from './ParkSearch'
 
-export default class Parks extends Component {
+export default class ParksContainer extends Component {
   state = {
     parks: []
   }
@@ -25,6 +26,9 @@ export default class Parks extends Component {
         <h1>
           Parks
         </h1>
+        <h2>
+          <ParkSearch />
+        </h2>
         <ul>
           {this.state.parks.map((park, index) => <ParkCard name={park.name} img={park.image} key={index} />)}
         </ul>
