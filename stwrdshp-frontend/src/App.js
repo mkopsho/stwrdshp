@@ -1,37 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import About from './components/About'
+import Home from './components/Home'
+import NavBar from './components/NavBar'
+import Parks from './components/Parks'
 
-function testFetch() {
-  fetch('http://localhost:3000/parks')
-    .then((parks) => {
-      return parks.json()
-    })
-    .then((parks) => {
-      console.log(parks)
-    })
-}
+// Test fetch to check backend connectivity
+// function testFetch() {
+//   fetch('http://localhost:3000/parks')
+//     .then((parks) => {
+//       return parks.json()
+//     })
+//     .then((parks) => {
+//       console.log(parks)
+//     })
+// }
 
 function App() {
-  testFetch()
+  // testFetch()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/parks" component={Parks} />
+        </Switch>
+      </div>
+    </Router>
   )
 }
 
-export default App;
+export default App
