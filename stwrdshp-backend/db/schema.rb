@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_162228) do
     t.string "name"
     t.text "description"
     t.string "state"
+    t.text "image"
     t.decimal "lat"
     t.decimal "long"
     t.integer "list_id"
