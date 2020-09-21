@@ -25,7 +25,7 @@ export default class Parks extends Component {
           Parks
         </h1>
         <ul>
-          {this.state.parks.map((park, index) => <li>{park.name}<img key={index} alt="Park image" src={park.image}></img></li>)}
+          {this.state.parks.map((park, index) => <li key={index}>{park.name}<img alt="Park image" src={park.image}></img></li>)}
         </ul>
       </div >
     )
