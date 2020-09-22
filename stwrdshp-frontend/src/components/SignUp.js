@@ -28,7 +28,8 @@ export default class SignUp extends Component {
       .then(userData => {
         console.log(userData)
         localStorage.setItem("token", userData.jwt)
-        // handle log in?
+        localStorage.setItem("username", userData.user.username)
+        this.props.history.push("/")
       })
   }
 
