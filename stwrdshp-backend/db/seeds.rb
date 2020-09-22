@@ -1,3 +1,4 @@
+User.delete_all
 Park.delete_all
 
 parks = Park.create(name: 'Yellowstone National Park', state: 'MT', image: 'https://www.nps.gov/common/uploads/structured_data/3C7D3BD3-1DD8-B71B-0BB607F9BAAE1271.jpg')
