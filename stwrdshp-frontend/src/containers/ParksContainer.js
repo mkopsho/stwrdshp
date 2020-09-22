@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ParkCard from './ParkCard'
-import ParkSearch from './ParkSearch'
+import ParkCard from '../components/ParkCard'
+import ParkSearch from '../components/ParkSearch'
 
 export default class ParksContainer extends Component {
   state = {

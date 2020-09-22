@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import About from './components/About'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
-import ParksContainer from './components/ParksContainer'
+import ParksContainer from './containers/ParksContainer'
 
 // Test fetch to check backend connectivity
 // function testFetch() {

@@ -13,6 +13,12 @@ const NavBar = () => {
       <li>
         <Link to="/parks">Parks</Link>
       </li>
+      <li>
+        <Link to="/login">Log In</Link>
+      </li>
+      <li>
+        <Link to="/signup">Sign Up</Link>
+      </li>
     </ul>
   )
 }
