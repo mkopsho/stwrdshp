@@ -4,7 +4,8 @@ import ParkSearch from './ParkSearch'
 
 export default class ParksContainer extends Component {
   state = {
-    parks: []
+    parks: [],
+    stateCode: ''
   }
 
   componentDidMount() {
@@ -21,14 +22,12 @@ export default class ParksContainer extends Component {
   }
 
   renderParkCards = (stateCode) => {
-    let renderedParks = this.state.parks
     if (stateCode) {
       this.setState({
         stateCode: stateCode
       })
-      renderedParks = this.state.parks.filter((park) => park.state.includes(stateCode))
     }
-    console.log(renderedParks)
+    let renderedParks = this.state.parks.filter((park) => park.state.includes(this.state.stateCode))
     return renderedParks.map((park, index) => {
       return <ParkCard name={park.name} img={park.image} key={index} />
     })
