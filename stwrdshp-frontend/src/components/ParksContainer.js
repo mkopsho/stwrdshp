@@ -22,12 +22,15 @@ export default class ParksContainer extends Component {
       })
   }
 
-  renderParkCards = (stateCode) => {
+  renderParkCards = (searchObj) => {
     // use Redux
-    if (stateCode) {
-      this.setState({
-        stateCode: stateCode
-      })
+    // revisit search by name when you can
+    if (searchObj) {
+      if (searchObj.stateCode) {
+        this.setState({
+          stateCode: searchObj.stateCode
+        })
+      }
     }
     let renderedParks = this.state.parks.filter((park) => park.state.includes(this.state.stateCode))
     return renderedParks.map((park, index) => {
