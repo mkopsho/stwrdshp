@@ -7,7 +7,7 @@ export default class ParkSearch extends Component {
     parkName: ''
   }
 
-  handleStateFormOnSubmit = (event) => {
+  handleOnSubmit = (event) => {
     event.preventDefault()
     // TODO: use Redux
     this.props.renderParkCards(this.state)
@@ -25,7 +25,7 @@ export default class ParkSearch extends Component {
         <h3>
           Parks Search Bar
         </h3>
-        <form onSubmit={this.handleStateFormOnSubmit}>
+        <form onSubmit={this.handleOnSubmit}>
           <label htmlFor="search-states">Search Parks by State: </label>
           <select id="search-states" name="stateCode" value={this.state.value} onChange={this.handleOnChange}>
             <option value="Select a state" select="true">Select a state</option>
@@ -83,7 +83,7 @@ export default class ParkSearch extends Component {
           </select>
           <input type="submit" value="Search States"></input>
         </form>
-        <form onSubmit={this.handleNameFormOnSubmit}>
+        <form onSubmit={this.handleOnSubmit}>
           <label htmlFor="search-names">Search Parks by Name: </label>
           <input type="text" name="parkName" value={this.state.value} onChange={this.handleOnChange}></input>
           <input type="submit" value="Search By Name"></input>

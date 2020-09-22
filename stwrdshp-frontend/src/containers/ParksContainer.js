@@ -37,18 +37,22 @@ export default class ParksContainer extends Component {
 
   renderParkCards = (searchObj) => {
     // TODO: use Redux
-    // TODO: fix search - by - state now that we're fetching API data
-    // TODO: revisit search - by - name when you can
+    // TODO: use defaultState or re-render full list when we mess with this.state.parks due to the searches
     if (searchObj) {
       if (searchObj.stateCode) {
+        let renderedParks = this.state.parks.filter((park) => park.state.includes(searchObj.stateCode))
         this.setState({
-          stateCode: searchObj.stateCode
+          parks: renderedParks
+        })
+      }
+      if (searchObj.parkName) {
+        let renderedParks = this.state.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
+        this.setState({
+          parks: renderedParks
         })
       }
     }
-    let renderedParks = this.state.parks.filter((park) => park.state.includes(this.state.stateCode))
-    return renderedParks.map((park, index) => {
-      // console.log(park)
+    return this.state.parks.map((park, index) => {
       return <ParkCard name={park.name} img={park.image} state={park.state} key={index} />
     })
   }
