@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Header = () => {
-  // use Redux
+  // TODO: use Redux
   if (localStorage.getItem("username")) {
     return (
       <div>

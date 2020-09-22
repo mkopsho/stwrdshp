@@ -10,7 +10,19 @@ export default class ParksContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('mounted')
+    // TODO: use thunk and uncomment for actual API crawling (async fetch vs. render)
+    //   fetch('https://developer.nps.gov/api/v1/parks?api_key=eucnhNo81VauxloY6tcZF41iFh5AUkofsEqeIW2x')
+    //     .then((parks) => {
+    //       return parks.json()
+    //     })
+    //     .then((parks) => {
+    //       parks.data.forEach((park) =>
+    //         this.setState({
+    //           parks: [...this.state.parks, park]
+    //         }))
+    //     })
+    // }
+    console.log('ParksContainer mounted!')
     fetch('http://localhost:3000/parks')
       .then((parks) => {
         return parks.json()
@@ -22,9 +34,11 @@ export default class ParksContainer extends Component {
       })
   }
 
+
   renderParkCards = (searchObj) => {
-    // use Redux
-    // revisit search by name when you can
+    // TODO: use Redux
+    // TODO: fix search - by - state now that we're fetching API data
+    // TODO: revisit search - by - name when you can
     if (searchObj) {
       if (searchObj.stateCode) {
         this.setState({
@@ -34,6 +48,7 @@ export default class ParksContainer extends Component {
     }
     let renderedParks = this.state.parks.filter((park) => park.state.includes(this.state.stateCode))
     return renderedParks.map((park, index) => {
+      // console.log(park)
       return <ParkCard name={park.name} img={park.image} key={index} />
     })
   }
@@ -45,7 +60,7 @@ export default class ParksContainer extends Component {
           Parks
         </h1>
         <h2>
-          {/* use Redux */}
+          {/* TODO: use Redux */}
           <ParkSearch renderParkCards={this.renderParkCards} />
         </h2>
         <ul>

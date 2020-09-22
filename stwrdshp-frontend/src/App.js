@@ -8,19 +8,20 @@ import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
 import ParksContainer from './containers/ParksContainer'
 
-// Test fetch to check backend connectivity
+// Test fetch to check backend/API connectivity
 // function testFetch() {
-//   fetch('http://localhost:3000/parks')
+//   fetch('https://developer.nps.gov/api/v1/parks?api_key=eucnhNo81VauxloY6tcZF41iFh5AUkofsEqeIW2x')
 //     .then((parks) => {
 //       return parks.json()
 //     })
 //     .then((parks) => {
-//       console.log(parks)
+//       console.log(parks.data)
+//       parks.data.forEach((park) => console.log(park.fullName, park.images[0], park.states))
 //     })
 // }
 
 function App() {
-  // testFetch()
+  //testFetch()
   return (
     <Router>
       <div>
