@@ -49,7 +49,7 @@ export default class ParksContainer extends Component {
     let renderedParks = this.state.parks.filter((park) => park.state.includes(this.state.stateCode))
     return renderedParks.map((park, index) => {
       // console.log(park)
-      return <ParkCard name={park.name} img={park.image} key={index} />
+      return <ParkCard name={park.name} img={park.image} state={park.state} key={index} />
     })
   }
 

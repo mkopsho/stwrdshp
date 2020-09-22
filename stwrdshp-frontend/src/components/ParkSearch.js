@@ -28,7 +28,7 @@ export default class ParkSearch extends Component {
         <form onSubmit={this.handleStateFormOnSubmit}>
           <label htmlFor="search-states">Search Parks by State: </label>
           <select id="search-states" name="stateCode" value={this.state.value} onChange={this.handleOnChange}>
-            <option value="" disabled select>Select a state</option>
+            <option value="Select a state" select="true">Select a state</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
