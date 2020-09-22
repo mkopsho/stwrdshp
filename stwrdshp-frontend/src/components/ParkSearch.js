@@ -3,30 +3,37 @@ import React, { Component } from 'react'
 
 export default class ParkSearch extends Component {
   state = {
-    stateCode: ''
+    stateCode: '',
+    parkName: ''
   }
 
-  handleOnSubmit = (event) => {
+  handleStateFormOnSubmit = (event) => {
     event.preventDefault()
     // use Redux
-    console.log('submit button clicked')
     this.props.renderParkCards(this.state.stateCode)
+  }
+
+  handleNameFormOnSubmit = (event) => {
+    event.preventDefault()
+    this.props.renderParkCards(this.state.parkName)
   }
 
   handleOnChange = (event) => {
     this.setState({
-      stateCode: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
   render() {
     return (
       <div>
-        Parks Search Bar
-        <form onSubmit={this.handleOnSubmit}>
+        <h3>
+          Parks Search Bar
+        </h3>
+        <form onSubmit={this.handleStateFormOnSubmit}>
           <label htmlFor="search-states">Search Parks by State: </label>
-          <select id="search-states" value={this.state.value} onChange={this.handleOnChange}>
-            <option value="" disabled selected>Select a state</option>
+          <select id="search-states" name="stateCode" value={this.state.value} onChange={this.handleOnChange}>
+            {/* <option value="" disabled select>Select a state</option> */}
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -80,6 +87,11 @@ export default class ParkSearch extends Component {
             <option value="WY">Wyoming</option>
           </select>
           <input type="submit" value="Search States"></input>
+        </form>
+        <form onSubmit={this.handleNameFormOnSubmit}>
+          <label htmlFor="search-names">Search Parks by Name: </label>
+          <input type="text" name="parkName" value={this.state.value} onChange={this.handleOnChange}></input>
+          <input type="submit" value="Search By Name"></input>
         </form>
       </div>
     )

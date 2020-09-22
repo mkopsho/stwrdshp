@@ -5,7 +5,8 @@ import ParkSearch from './ParkSearch'
 export default class ParksContainer extends Component {
   state = {
     parks: [],
-    stateCode: ''
+    stateCode: '',
+    parkName: ''
   }
 
   componentDidMount() {
@@ -22,6 +23,7 @@ export default class ParksContainer extends Component {
   }
 
   renderParkCards = (stateCode) => {
+    // use Redux
     if (stateCode) {
       this.setState({
         stateCode: stateCode
