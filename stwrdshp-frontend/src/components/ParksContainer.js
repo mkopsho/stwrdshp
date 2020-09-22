@@ -8,16 +8,30 @@ export default class ParksContainer extends Component {
   }
 
   componentDidMount() {
+    console.log('mounted')
     fetch('http://localhost:3000/parks')
       .then((parks) => {
         return parks.json()
       })
       .then((parks) => {
-        console.log(parks)
         this.setState({
           parks: parks
-        }, () => console.log("New state:", this.state))
+        })
       })
+  }
+
+  renderParkCards = (stateCode) => {
+    let renderedParks = this.state.parks
+    if (stateCode) {
+      this.setState({
+        stateCode: stateCode
+      })
+      renderedParks = this.state.parks.filter((park) => park.state.includes(stateCode))
+    }
+    console.log(renderedParks)
+    return renderedParks.map((park, index) => {
+      return <ParkCard name={park.name} img={park.image} key={index} />
+    })
   }
 
   render() {
@@ -27,10 +41,11 @@ export default class ParksContainer extends Component {
           Parks
         </h1>
         <h2>
-          <ParkSearch />
+          {/* use Redux */}
+          <ParkSearch renderParkCards={this.renderParkCards} />
         </h2>
         <ul>
-          {this.state.parks.map((park, index) => <ParkCard name={park.name} img={park.image} key={index} />)}
+          {this.renderParkCards()}
         </ul>
       </div >
     )

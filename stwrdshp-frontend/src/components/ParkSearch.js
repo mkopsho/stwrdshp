@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import ParksContainer from './ParksContainer' // use Redux
 
 export default class ParkSearch extends Component {
   state = {
@@ -7,14 +8,15 @@ export default class ParkSearch extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault()
-    console.log('Form submitted!')
+    // use Redux
+    console.log('submit button clicked')
+    this.props.renderParkCards(this.state.stateCode)
   }
 
   handleOnChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      stateCode: event.target.value
     })
-    console.log('Form changed!', this.state)
   }
 
   render() {
@@ -23,7 +25,7 @@ export default class ParkSearch extends Component {
         Parks Search Bar
         <form onSubmit={this.handleOnSubmit}>
           <label htmlFor="search-states">Search Parks by State: </label>
-          <select id="search-states" name="stateCode" value={this.state.stateCode} onChange={this.handleOnChange}>
+          <select id="search-states" value={this.state.value} onChange={this.handleOnChange}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
