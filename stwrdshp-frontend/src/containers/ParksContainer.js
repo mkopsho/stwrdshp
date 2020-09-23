@@ -54,7 +54,7 @@ export default class ParksContainer extends Component {
       }
     }
     return this.state.filteredList.map((park, index) => {
-      return <ParkCard name={park.name} img={park.image} state={park.state} key={index} />
+      return <ParkCard name={park.name} img={park.image} state={park.state} index={index} key={index} />
     })
   }
 
