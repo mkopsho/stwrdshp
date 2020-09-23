@@ -41,6 +41,7 @@ function App() {
               localStorage.removeItem("token")
               localStorage.removeItem("username")
               localStorage.removeItem("logged_in")
+              localStorage.removeItem("id")
             }
             return <Redirect to='/' />
           }} />

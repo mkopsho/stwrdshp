@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  wrap_parameters :user, include: [:username, :email, :password]
+  wrap_parameters :user, include: [:username, :email, :password, :id]
 
   def create
     user = User.create(user_params)
@@ -13,9 +13,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    user = User.find_by(id: params[:id])
+    user_likes = user.lists.first.parks
+    render json: user_likes
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :id)
   end
 end

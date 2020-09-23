@@ -3,28 +3,30 @@ import ParkCard from '../components/ParkCard'
 
 export default class LikesContainer extends Component {
   state = {
-    likes: []
+    likedParks: []
   }
 
   componentDidMount() {
     console.log("LikesContainer mounted")
-    // fetch('http://localhost:3000/parks')
-    //   .then((parks) => {
-    //     return parks.json()
-    //   })
-    //   .then((parks) => {
-    //     this.setState({
-    //       // liked parks
-    //     })
-    //   })
+    let user_id = localStorage.getItem("id")
+    fetch(`http://localhost:3000/users/${user_id}`)
+      .then((likedParks) => {
+        return likedParks.json()
+      })
+      .then((likedParks) => {
+        console.log(likedParks)
+        this.setState({
+          likedParks: likedParks
+        })
+      })
   }
 
-  // renderLikedParks = () => {
-  //   // TODO: use Redux
-  //   return this.state.likes.map((park, index) => {
-  //     return <ParkCard name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
-  //   })
-  // }
+  renderLikedParks = () => {
+    // TODO: use Redux
+    return this.state.likedParks.map((park, index) => {
+      return <ParkCard name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+    })
+  }
 
   render() {
     return (
@@ -33,7 +35,7 @@ export default class LikesContainer extends Component {
           Likes
         </h1>
         <ul>
-          {/* {this.renderLikedParks()} */}
+          {this.renderLikedParks()}
         </ul>
       </div >
     )
