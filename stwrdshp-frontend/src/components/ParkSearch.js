@@ -10,6 +10,7 @@ export default class ParkSearch extends Component {
   handleOnSubmit = (event) => {
     event.preventDefault()
     // TODO: use Redux
+    // TODO: clear form fields
     this.props.renderParkCards(this.state)
   }
 
