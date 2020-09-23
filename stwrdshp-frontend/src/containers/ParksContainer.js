@@ -81,7 +81,7 @@ export default class ParksContainer extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        // update list on frontend
+        // redirect to likes?
       })
   }
 

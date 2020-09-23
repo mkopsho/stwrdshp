@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Like from './Like'
 
 const ParkCard = (props) => {
   let overlay
@@ -8,8 +7,9 @@ const ParkCard = (props) => {
     overlay = (
       <div>
         {props.name} | {props.state}
-        {/* TODO: fix this overlay */}
-        <Like parkId={props.id} handleLike={props.handleLike} />
+        <p onClick={() => props.handleLike(props.id)}>
+          Like me bro
+        </p>
       </div>
     )
   } else {
