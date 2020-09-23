@@ -9,7 +9,9 @@ const NavBar = () => {
         <li>
           <Link to="/logout">Log Out</Link>
         </li>
-        {/* Lists/Profile */}
+        <li>
+          <Link to="/likes">Likes</Link>
+        </li>
       </>
     )
   } else {

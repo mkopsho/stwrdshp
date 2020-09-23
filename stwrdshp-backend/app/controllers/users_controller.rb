@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
+      user.lists.create(name: "Liked Parks")
       payload = { user_id: user.id }
       token = JWT.encode(payload, ENV['JWT_KEY'])
       render json: { user: user, jwt: token }

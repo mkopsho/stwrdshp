@@ -54,7 +54,7 @@ export default class ParksContainer extends Component {
       }
     }
     return this.state.filteredList.map((park, index) => {
-      return <ParkCard name={park.name} img={park.image} state={park.state} index={index} key={index} />
+      return <ParkCard handleLike={this.handleLike} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }
 
@@ -62,6 +62,27 @@ export default class ParksContainer extends Component {
     this.setState({
       filteredList: this.state.parks
     })
+  }
+
+  handleLike = (parkId) => {
+    console.log("I've been clicked")
+    console.log(parkId)
+    fetch('http://localhost:3000/likes', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        username: localStorage.getItem("username"),
+        park_id: parkId
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        // update list on frontend
+      })
   }
 
   render() {

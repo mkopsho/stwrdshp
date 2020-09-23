@@ -3,6 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import About from './components/About'
 import Home from './components/Home'
+import LikesContainer from './containers/LikesContainer'
 import LogIn from './components/LogIn'
 import NavBar from './components/NavBar'
 import Park from './components/Park'
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route path="/parks/:parkId" render={() => <Park />} />
           <Route exact path="/parks" component={ParksContainer} />
+          <Route exact path="/likes" component={LikesContainer} />
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/logout" render={() => {
