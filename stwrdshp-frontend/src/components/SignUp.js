@@ -4,7 +4,7 @@ export default class SignUp extends Component {
   state = {
     username: '',
     email: '',
-    password: ''
+    password: '',
   }
 
   handleOnSubmit = (event) => {
@@ -12,6 +12,7 @@ export default class SignUp extends Component {
     let username = this.state.username
     let email = this.state.email
     let password = this.state.password
+
     fetch('http://localhost:3000/users', {
       method: "POST",
       headers: {
@@ -29,6 +30,7 @@ export default class SignUp extends Component {
         console.log(userData)
         localStorage.setItem("token", userData.jwt)
         localStorage.setItem("username", userData.user.username)
+        localStorage.setItem("logged_in", true)
         this.props.history.push("/")
       })
   }

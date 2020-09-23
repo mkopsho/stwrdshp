@@ -2,6 +2,29 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom' // decide on one (`Link` or `NavLink`) and stick with it!
 
 const NavBar = () => {
+  let userNavDisplay
+  if (localStorage.logged_in) { // TODO: use Redux state to re-render
+    userNavDisplay = (
+      <>
+        <li>
+          <Link to="/logout">Log Out</Link>
+        </li>
+        {/* Lists/Profile */}
+      </>
+    )
+  } else {
+    userNavDisplay = (
+      <>
+        <li>
+          <Link to="/login">Log In</Link>
+        </li>
+        <li>
+          <Link to="/signup">Sign Up</Link>
+        </li>
+      </>
+    )
+  }
+
   return (
     <ul>
       <li>
@@ -13,12 +36,7 @@ const NavBar = () => {
       <li>
         <Link to="/parks">Parks</Link>
       </li>
-      <li>
-        <Link to="/login">Log In</Link>
-      </li>
-      <li>
-        <Link to="/signup">Sign Up</Link>
-      </li>
+      {userNavDisplay}
     </ul>
   )
 }

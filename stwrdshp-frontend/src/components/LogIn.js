@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class LogIn extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
   }
 
   handleOnSubmit = (event) => {
@@ -26,6 +26,7 @@ export default class LogIn extends Component {
         console.log(userData)
         localStorage.setItem("token", userData.jwt)
         localStorage.setItem("username", userData.user.username)
+        localStorage.setItem("logged_in", true)
         this.props.history.push("/")
       })
   }
