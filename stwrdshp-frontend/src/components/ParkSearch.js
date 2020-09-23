@@ -13,6 +13,11 @@ export default class ParkSearch extends Component {
     this.props.renderParkCards(this.state)
   }
 
+  handleClearOnSubmit = (event) => {
+    event.preventDefault()
+    this.props.resetParkCards()
+  }
+
   handleOnChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -87,6 +92,10 @@ export default class ParkSearch extends Component {
           <label htmlFor="search-names">Search Parks by Name: </label>
           <input type="text" name="parkName" value={this.state.value} onChange={this.handleOnChange}></input>
           <input type="submit" value="Search By Name"></input>
+        </form>
+        <form onSubmit={this.handleClearOnSubmit}>
+          <label htmlFor="clear-inputs">Clear Inputs: </label>
+          <input type="submit" value="Clear Inputs"></input>
         </form>
       </div>
     )

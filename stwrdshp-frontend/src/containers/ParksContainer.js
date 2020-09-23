@@ -5,6 +5,7 @@ import ParkSearch from '../components/ParkSearch'
 export default class ParksContainer extends Component {
   state = {
     parks: [],
+    filteredList: [],
     stateCode: '',
     parkName: ''
   }
@@ -29,7 +30,8 @@ export default class ParksContainer extends Component {
       })
       .then((parks) => {
         this.setState({
-          parks: parks
+          parks: parks,
+          filteredList: parks
         })
       })
   }
@@ -37,23 +39,28 @@ export default class ParksContainer extends Component {
 
   renderParkCards = (searchObj) => {
     // TODO: use Redux
-    // TODO: use defaultState or re-render full list when we mess with this.state.parks due to the searches
     if (searchObj) {
       if (searchObj.stateCode) {
         let renderedParks = this.state.parks.filter((park) => park.state.includes(searchObj.stateCode))
         this.setState({
-          parks: renderedParks
+          filteredList: renderedParks
         })
       }
       if (searchObj.parkName) {
         let renderedParks = this.state.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
         this.setState({
-          parks: renderedParks
+          filteredList: renderedParks
         })
       }
     }
-    return this.state.parks.map((park, index) => {
+    return this.state.filteredList.map((park, index) => {
       return <ParkCard name={park.name} img={park.image} state={park.state} key={index} />
+    })
+  }
+
+  resetParkCards = () => {
+    this.setState({
+      filteredList: this.state.parks
     })
   }
 
@@ -65,7 +72,7 @@ export default class ParksContainer extends Component {
         </h1>
         <h2>
           {/* TODO: use Redux */}
-          <ParkSearch renderParkCards={this.renderParkCards} />
+          <ParkSearch renderParkCards={this.renderParkCards} resetParkCards={this.resetParkCards} />
         </h2>
         <ul>
           {this.renderParkCards()}

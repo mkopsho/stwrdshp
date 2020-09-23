@@ -20,14 +20,6 @@ import ParksContainer from './containers/ParksContainer'
 //     })
 // }
 
-// TODO: revisit / use Redux
-// function logout() {
-//   if (localStorage['jwt']) {
-//     localStorage.removeItem('jwt')
-//     localStorage.removeItem('logged_in')
-//   }
-// }
-
 function App() {
   //testFetch()
   return (
@@ -46,6 +38,7 @@ function App() {
               localStorage.removeItem("username")
               localStorage.removeItem("logged_in")
             }
+            // TODO: Make a fetch to terminate session
             return <Redirect to='/' />
           }} />
         </Switch>
