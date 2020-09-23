@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function ParkCard(props) {
+const ParkCard = (props) => {
   console.log("I'm being rendered")
   return (
     <div className="park_card" >
