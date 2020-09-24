@@ -3,4 +3,9 @@ class ParksController < ApplicationController
     parks = Park.all
     render json: parks
   end
+
+  def show
+    park = Park.find_by(id: params[:id])
+    render json: park
+  end
 end
