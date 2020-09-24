@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import LikeIcon from './LikeIcon'
 
 const ParkCard = (props) => {
   let overlay
@@ -8,8 +9,8 @@ const ParkCard = (props) => {
       <div>
         {props.name} | {props.state}
         <p onClick={() => props.handleLike(props.id)}>
-          Like me bro
         </p>
+        < LikeIcon />
       </div>
     )
   } else {

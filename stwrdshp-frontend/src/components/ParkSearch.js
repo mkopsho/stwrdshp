@@ -10,8 +10,12 @@ export default class ParkSearch extends Component {
   handleOnSubmit = (event) => {
     event.preventDefault()
     // TODO: use Redux
-    // TODO: clear form fields
     this.props.renderParkCards(this.state)
+    this.setState({
+      stateCode: '',
+      parkName: ''
+    })
+    console.log(this.state)
   }
 
   handleClearOnSubmit = (event) => {
@@ -33,7 +37,7 @@ export default class ParkSearch extends Component {
         </h3>
         <form onSubmit={this.handleOnSubmit}>
           <label htmlFor="search-states">Search Parks by State: </label>
-          <select id="search-states" name="stateCode" value={this.state.value} onChange={this.handleOnChange}>
+          <select id="search-states" name="stateCode" value={this.state.stateCode} onChange={this.handleOnChange}>
             <option value="Select a state" select="true">Select a state</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -91,12 +95,12 @@ export default class ParkSearch extends Component {
         </form>
         <form onSubmit={this.handleOnSubmit}>
           <label htmlFor="search-names">Search Parks by Name: </label>
-          <input type="text" name="parkName" value={this.state.value} onChange={this.handleOnChange}></input>
+          <input type="text" name="parkName" value={this.state.parkName} onChange={this.handleOnChange}></input>
           <input type="submit" value="Search By Name"></input>
         </form>
         <form onSubmit={this.handleClearOnSubmit}>
-          <label htmlFor="clear-inputs">Clear Inputs: </label>
-          <input type="submit" value="Clear Inputs"></input>
+          <label htmlFor="clear-inputs">Reset Parks: </label>
+          <input type="submit" value="Reset Parks"></input>
         </form>
       </div>
     )
