@@ -17,3 +17,17 @@ export const resetParkCards = (parks) => ({
   type: "RESET_PARK_CARDS",
   payload: parks
 })
+
+// Async stuff
+// TODO: Better data gathering! (https://developer.nps.gov/api/v1/parks?api_key=eucnhNo81VauxloY6tcZF41iFh5AUkofsEqeIW2x)
+export const fetchParks = () => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/parks')
+      .then((parks) => {
+        return parks.json()
+      })
+      .then((parks) => {
+        dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
+      })
+  }
+}

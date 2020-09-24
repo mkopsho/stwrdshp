@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import ParkCard from '../components/ParkCard'
 import ParkSearch from '../components/ParkSearch'
 import { connect } from 'react-redux'
-import { gotParks } from '../actions/parkActions'
-import { searchParksByName } from '../actions/parkActions'
-import { searchParksByState } from '../actions/parkActions'
-import { resetParkCards } from '../actions/parkActions'
+import { fetchParks, searchParksByName, searchParksByState, resetParkCards } from '../actions/parkActions'
 
 class ParksContainer extends Component {
   state = {
@@ -17,26 +14,8 @@ class ParksContainer extends Component {
   }
 
   componentDidMount() {
-    // TODO: use thunk and uncomment for actual API crawling (async fetch vs. render)
-    //   fetch('https://developer.nps.gov/api/v1/parks?api_key=eucnhNo81VauxloY6tcZF41iFh5AUkofsEqeIW2x')
-    //     .then((parks) => {
-    //       return parks.json()
-    //     })
-    //     .then((parks) => {
-    //       parks.data.forEach((park) =>
-    //         this.setState({
-    //           parks: [...this.state.parks, park]
-    //         }))
-    //     })
-    // }
     console.log('ParksContainer mounted!')
-    fetch('http://localhost:3000/parks')
-      .then((parks) => {
-        return parks.json()
-      })
-      .then((parks) => {
-        this.props.gotParks(parks)
-      })
+    this.props.fetchParks()
   }
 
 
@@ -105,4 +84,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { gotParks, searchParksByName, searchParksByState, resetParkCards })(ParksContainer)
+export default connect(mapStateToProps, { fetchParks, searchParksByName, searchParksByState, resetParkCards })(ParksContainer)
