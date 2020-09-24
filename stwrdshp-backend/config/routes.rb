@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   post "/likes", to: "lists#update"
   delete "/likes", to: "lists#delete"
   post "/login", to: "sessions#login"
-  post "/logout", to: "sessions#logout"
 end

@@ -1,16 +1,17 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom' // decide on one (`Link` or `NavLink`) and stick with it!
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const NavBar = () => {
   let userNavDisplay
-  if (localStorage.logged_in) { // TODO: use Redux state to re-render
+  if (localStorage.getItem("username")) {
     userNavDisplay = (
       <>
         <li>
-          <Link to="/logout">Log Out</Link>
+          <NavLink to="/logout">Log Out</NavLink>
         </li>
         <li>
-          <Link to="/likes">Likes</Link>
+          <NavLink to="/likes">Likes</NavLink>
         </li>
       </>
     )
@@ -18,10 +19,10 @@ const NavBar = () => {
     userNavDisplay = (
       <>
         <li>
-          <Link to="/login">Log In</Link>
+          <NavLink to="/login">Log In</NavLink>
         </li>
         <li>
-          <Link to="/signup">Sign Up</Link>
+          <NavLink to="/signup">Sign Up</NavLink>
         </li>
       </>
     )
@@ -33,14 +34,18 @@ const NavBar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <NavLink to="/about">About</NavLink>
       </li>
       <li>
-        <Link to="/parks">Parks</Link>
+        <NavLink to="/parks">Parks</NavLink>
       </li>
       {userNavDisplay}
     </ul>
   )
 }
 
-export default NavBar
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps)(NavBar)

@@ -9,8 +9,4 @@ class SessionsController < ApplicationController
       render json: { errors: user.errors.full_messages }
     end
   end
-
-  def logout
-    render json: 'Log me out!'
-  end
 end

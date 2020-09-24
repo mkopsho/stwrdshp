@@ -1,7 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 const Header = () => {
-  // TODO: use Redux
   if (localStorage.getItem("username")) {
     return (
       <div>
@@ -13,4 +13,8 @@ const Header = () => {
   }
 }
 
-export default Header
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps)(Header)
