@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { logInUser } from '../actions/userActions'
+import SignUp from './SignUp'
 
-export default class LogIn extends Component {
+class LogIn extends Component {
   state = {
     username: '',
     password: '',
@@ -10,26 +13,8 @@ export default class LogIn extends Component {
     event.preventDefault()
     let username = this.state.username
     let password = this.state.password
-    fetch('http://localhost:3000/login', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
-    })
-      .then(response => response.json())
-      .then(userData => {
-        console.log(userData)
-        localStorage.setItem("token", userData.jwt)
-        localStorage.setItem("username", userData.user.username)
-        localStorage.setItem("id", userData.user.id)
-        localStorage.setItem("logged_in", true)
-        this.props.history.push("/")
-      })
+    this.props.logInUser(username, password)
+    this.props.history.push("/")
   }
 
   handleOnChange = (event) => {
@@ -53,3 +38,9 @@ export default class LogIn extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps, { logInUser })(LogIn)
