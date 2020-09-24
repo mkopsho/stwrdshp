@@ -6,10 +6,19 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import parkReducer from './reducers/parkReducer';
+import likeReducer from './reducers/likeReducer';
+import userReducer from './reducers/userReducer';
 
-const store = createStore(parkReducer, composeWithDevTools(applyMiddleware(thunk)))
+const rootReducer = combineReducers({
+  likes: likeReducer,
+  parks: parkReducer,
+  users: userReducer
+})
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <React.StrictMode>

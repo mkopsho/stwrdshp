@@ -6,8 +6,11 @@ import { fetchParks, searchParksByName, searchParksByState, resetParkCards } fro
 
 class ParksContainer extends Component {
   state = {
+    parks: [],
+    filteredList: [],
     stateCode: '',
-    parkName: ''
+    parkName: '',
+    loadingParks: false
   }
 
   componentDidMount() {
@@ -17,28 +20,28 @@ class ParksContainer extends Component {
 
 
   renderParkCards = (searchObj) => {
-    console.log(this.props.loadingParks)
-    if (this.props.loadingParks) {
+    console.log(this.props)
+    if (this.props.parks.loadingParks) {
       return <h2>Loading Parks...</h2>
     }
 
     if (searchObj) {
       if (searchObj.stateCode) {
-        let renderedParks = this.props.parks.filter((park) => park.state.includes(searchObj.stateCode))
+        let renderedParks = this.props.parks.parks.filter((park) => park.state.includes(searchObj.stateCode))
         this.props.searchParksByState(renderedParks)
       }
       if (searchObj.parkName) {
-        let renderedParks = this.props.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
+        let renderedParks = this.props.parks.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
         this.props.searchParksByName(renderedParks)
       }
     }
-    return this.props.filteredList.map((park, index) => {
+    return this.props.parks.filteredList.map((park, index) => {
       return <ParkCard handleLike={this.handleLike} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }
 
   resetParkCards = () => {
-    this.props.resetParkCards(this.props.parks)
+    this.props.resetParkCards(this.props.parks.parks)
   }
 
   handleLike = (parkId) => {
