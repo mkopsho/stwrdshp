@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ParkCard from '../components/ParkCard'
 import ParkSearch from '../components/ParkSearch'
 import { connect } from 'react-redux'
-import { fetchParks, searchParksByName, searchParksByState, resetParkCards } from '../actions/parkActions'
+import { fetchParks, handleLikedPark, searchParksByName, searchParksByState, resetParkCards } from '../actions/parkActions'
 
 class ParksContainer extends Component {
   state = {
@@ -36,7 +36,7 @@ class ParksContainer extends Component {
       }
     }
     return this.props.parks.filteredList.map((park, index) => {
-      return <ParkCard handleLike={this.handleLike} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+      return <ParkCard handleLikedPark={this.handleLikedPark} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }
 
@@ -44,24 +44,8 @@ class ParksContainer extends Component {
     this.props.resetParkCards(this.props.parks.parks)
   }
 
-  handleLike = (parkId) => {
-    console.log("I've been clicked")
-    console.log(parkId)
-    fetch('http://localhost:3000/likes', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        username: localStorage.getItem("username"),
-        park_id: parkId
-      })
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-      })
+  handleLikedPark = (parkId) => {
+    this.props.handleLikedPark(parkId)
   }
 
   render() {
@@ -85,4 +69,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchParks, searchParksByName, searchParksByState, resetParkCards })(ParksContainer)
+export default connect(mapStateToProps, { fetchParks, handleLikedPark, searchParksByName, searchParksByState, resetParkCards })(ParksContainer)

@@ -32,3 +32,23 @@ export const fetchParks = () => {
       })
   }
 }
+
+export const handleLikedPark = (parkId) => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/likes', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        username: localStorage.getItem("username"),
+        park_id: parkId
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+  }
+}
