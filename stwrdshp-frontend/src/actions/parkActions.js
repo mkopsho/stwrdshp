@@ -34,7 +34,7 @@ export const fetchParks = () => {
 }
 
 export const handleLikedPark = (parkId) => {
-  return (dispatch) => {
+  return () => {
     fetch('http://localhost:3000/likes', {
       method: "POST",
       headers: {
