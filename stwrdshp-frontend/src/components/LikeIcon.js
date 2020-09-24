@@ -1,12 +1,12 @@
-import React from 'react'
+// import React from 'react'
 
-const Like = () => {
-  let star = "☆"
-  return (
-    <p onClick={() => star = "★"}>
-      {star}
-    </p>
-  )
-}
+// const LikeIcon = () => {
+//   let star = "☆"
+//   return (
+//     <p onClick={() => star = "★"}>
+//       {star}
+//     </p>
+//   )
+// }
 
-export default Like
+// export default LikeIcon

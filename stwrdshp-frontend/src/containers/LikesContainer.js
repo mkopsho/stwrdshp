@@ -24,8 +24,31 @@ export default class LikesContainer extends Component {
   renderLikedParks = () => {
     // TODO: use Redux
     return this.state.likedParks.map((park, index) => {
-      return <ParkCard name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+      return <ParkCard handleUnLike={this.handleUnLike} liked={true} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
+  }
+
+  handleUnLike = (parkId) => {
+    console.log("I've been unliked")
+    console.log(parkId)
+    fetch('http://localhost:3000/likes', {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        username: localStorage.getItem("username"),
+        park_id: parkId
+      })
+    })
+      .then(response => response.json())
+      .then(likedParks => {
+        console.log(likedParks)
+        this.setState({
+          likedParks: likedParks
+        })
+      })
   }
 
   render() {

@@ -1,18 +1,29 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import LikeIcon from './LikeIcon'
+// import LikeIcon from './LikeIcon'
 
 const ParkCard = (props) => {
   let overlay
   if (localStorage.logged_in) { // TODO: use Redux
-    overlay = (
-      <div>
-        {props.name} | {props.state}
-        <p onClick={() => props.handleLike(props.id)}>
+    if (props.liked) {
+      overlay = (
+        <div>
+          {props.name} | {props.state}
+          <p onClick={() => props.handleUnLike(props.id)}>
+            ★
         </p>
-        < LikeIcon />
-      </div>
-    )
+        </div>
+      )
+    } else {
+      overlay = (
+        <div>
+          {props.name} | {props.state}
+          <p onClick={() => props.handleLike(props.id)}>
+            ☆
+        </p>
+        </div>
+      )
+    }
   } else {
     overlay = (
       <div>
