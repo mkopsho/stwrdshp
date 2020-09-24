@@ -12,7 +12,8 @@ class ParksContainer extends Component {
     parks: [],
     filteredList: [],
     stateCode: '',
-    parkName: ''
+    parkName: '',
+    loadingParks: true
   }
 
   componentDidMount() {
@@ -40,7 +41,10 @@ class ParksContainer extends Component {
 
 
   renderParkCards = (searchObj) => {
-    // TODO: use Redux
+    if (this.props.loadingParks) {
+      return <h2>Loading Parks...</h2>
+    }
+
     if (searchObj) {
       if (searchObj.stateCode) {
         let renderedParks = this.props.parks.filter((park) => park.state.includes(searchObj.stateCode))
@@ -77,7 +81,6 @@ class ParksContainer extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        // redirect to likes?
       })
   }
 
@@ -88,7 +91,6 @@ class ParksContainer extends Component {
           Parks
         </h1>
         <h2>
-          {/* TODO: use Redux */}
           <ParkSearch renderParkCards={this.renderParkCards} resetParkCards={this.resetParkCards} />
         </h2>
         <ul>
