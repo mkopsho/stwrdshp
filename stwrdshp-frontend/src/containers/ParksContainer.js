@@ -6,11 +6,8 @@ import { fetchParks, searchParksByName, searchParksByState, resetParkCards } fro
 
 class ParksContainer extends Component {
   state = {
-    parks: [],
-    filteredList: [],
     stateCode: '',
-    parkName: '',
-    loadingParks: true
+    parkName: ''
   }
 
   componentDidMount() {
@@ -20,6 +17,7 @@ class ParksContainer extends Component {
 
 
   renderParkCards = (searchObj) => {
+    console.log(this.props.loadingParks)
     if (this.props.loadingParks) {
       return <h2>Loading Parks...</h2>
     }

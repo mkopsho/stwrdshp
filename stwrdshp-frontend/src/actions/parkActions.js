@@ -22,6 +22,7 @@ export const resetParkCards = (parks) => ({
 // TODO: Better data gathering! (https://developer.nps.gov/api/v1/parks?api_key=eucnhNo81VauxloY6tcZF41iFh5AUkofsEqeIW2x)
 export const fetchParks = () => {
   return (dispatch) => {
+    dispatch({ type: "LOADING" })
     fetch('http://localhost:3000/parks')
       .then((parks) => {
         return parks.json()
