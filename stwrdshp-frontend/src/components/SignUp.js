@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createUser } from '../actions/userActions'
 
-export default class SignUp extends Component {
+class SignUp extends Component {
   state = {
     username: '',
     email: '',
@@ -12,28 +14,8 @@ export default class SignUp extends Component {
     let username = this.state.username
     let email = this.state.email
     let password = this.state.password
-
-    fetch('http://localhost:3000/users', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        password
-      })
-    })
-      .then(response => response.json())
-      .then(userData => {
-        console.log(userData)
-        localStorage.setItem("token", userData.jwt)
-        localStorage.setItem("username", userData.user.username)
-        localStorage.setItem("id", userData.user.id)
-        localStorage.setItem("logged_in", true)
-        this.props.history.push("/")
-      })
+    this.props.createUser(username, email, password)
+    this.props.history.push("/")
   }
 
   handleOnChange = (event) => {
@@ -58,3 +40,9 @@ export default class SignUp extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps, { createUser })(SignUp)
