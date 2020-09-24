@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import ParkCard from '../components/ParkCard'
 import ParkSearch from '../components/ParkSearch'
+import { connect } from 'react-redux'
+import { gotParks } from '../actions/parkActions'
+import { searchParksByName } from '../actions/parkActions'
+import { searchParksByState } from '../actions/parkActions'
+import { resetParkCards } from '../actions/parkActions'
 
-export default class ParksContainer extends Component {
+class ParksContainer extends Component {
   state = {
     parks: [],
     filteredList: [],
@@ -29,10 +34,7 @@ export default class ParksContainer extends Component {
         return parks.json()
       })
       .then((parks) => {
-        this.setState({
-          parks: parks,
-          filteredList: parks
-        })
+        this.props.gotParks(parks)
       })
   }
 
@@ -41,27 +43,21 @@ export default class ParksContainer extends Component {
     // TODO: use Redux
     if (searchObj) {
       if (searchObj.stateCode) {
-        let renderedParks = this.state.parks.filter((park) => park.state.includes(searchObj.stateCode))
-        this.setState({
-          filteredList: renderedParks
-        })
+        let renderedParks = this.props.parks.filter((park) => park.state.includes(searchObj.stateCode))
+        this.props.searchParksByState(renderedParks)
       }
       if (searchObj.parkName) {
-        let renderedParks = this.state.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
-        this.setState({
-          filteredList: renderedParks
-        })
+        let renderedParks = this.props.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
+        this.props.searchParksByName(renderedParks)
       }
     }
-    return this.state.filteredList.map((park, index) => {
+    return this.props.filteredList.map((park, index) => {
       return <ParkCard handleLike={this.handleLike} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }
 
   resetParkCards = () => {
-    this.setState({
-      filteredList: this.state.parks
-    })
+    this.props.resetParkCards(this.props.parks)
   }
 
   handleLike = (parkId) => {
@@ -102,3 +98,9 @@ export default class ParksContainer extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps, { gotParks, searchParksByName, searchParksByState, resetParkCards })(ParksContainer)
