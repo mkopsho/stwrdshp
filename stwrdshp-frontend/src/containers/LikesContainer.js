@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ParkCard from '../components/ParkCard'
 import { connect } from 'react-redux'
-import { fetchLikes } from '../actions/likeActions'
+import { fetchLikes, handleUnlikedPark } from '../actions/likeActions'
 
 class LikesContainer extends Component {
   state = {
@@ -15,31 +15,12 @@ class LikesContainer extends Component {
 
   renderLikedParks = () => {
     return this.props.likes.likedParks.map((park, index) => {
-      return <ParkCard handleUnLike={this.handleUnLike} liked={true} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+      return <ParkCard handleUnlikedPark={this.handleUnlikedPark} liked={true} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }
 
-  handleUnLike = (parkId) => {
-    console.log("I've been unliked")
-    console.log(parkId)
-    fetch('http://localhost:3000/likes', {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        username: localStorage.getItem("username"),
-        park_id: parkId
-      })
-    })
-      .then(response => response.json())
-      .then(likedParks => {
-        console.log(likedParks)
-        this.setState({
-          likedParks: likedParks
-        })
-      })
+  handleUnlikedPark = (parkId) => {
+    this.props.handleUnlikedPark(parkId)
   }
 
   render() {
@@ -60,4 +41,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchLikes })(LikesContainer)
+export default connect(mapStateToProps, { fetchLikes, handleUnlikedPark })(LikesContainer)
