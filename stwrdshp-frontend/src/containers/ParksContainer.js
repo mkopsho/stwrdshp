@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-// import ParkCard from '../components/ParkCard'
+import ParkCard from '../components/ParkCard'
 import ParkSearch from '../components/ParkSearch'
 import { connect } from 'react-redux'
 import { fetchParks, handleLikedPark, searchParksByName, searchParksByState, resetParkCards } from '../actions/parkActions'
-import { Suspense } from 'react';
-
-const ParkCard = React.lazy(() => import('../components/ParkCard'))
+import ReactPaginate from 'react-paginate'
 
 class ParksContainer extends Component {
   state = {
@@ -13,14 +11,15 @@ class ParksContainer extends Component {
     filteredList: [],
     stateCode: '',
     parkName: '',
-    loadingParks: false
+    loadingParks: false,
+    perPage: 20,
+    offset: 0
   }
 
   componentDidMount() {
     console.log('ParksContainer mounted!')
-    this.props.fetchParks()
+    this.props.fetchParks(this.state.perPage, this.state.offset)
   }
-
 
   renderParkCards = (searchObj) => {
     console.log(this.props)
@@ -39,13 +38,10 @@ class ParksContainer extends Component {
       }
     }
     return this.props.parks.filteredList.map((park, index) => {
-      console.log(park.image)
       if (park.image === null) {
         park.image = "../../stwrdshp_placeholder.jpg"
       }
-      return <Suspense fallback={<div>Loading...</div>}>
-        <ParkCard handleLikedPark={this.handleLikedPark} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
-      </Suspense>
+      return <ParkCard handleLikedPark={this.handleLikedPark} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }
 
@@ -55,6 +51,15 @@ class ParksContainer extends Component {
 
   handleLikedPark = (parkId) => {
     this.props.handleLikedPark(parkId)
+  }
+
+  handlePageClick = (data) => {
+    let selected = data.selected;
+    let offset = Math.ceil(selected * this.state.perPage);
+
+    this.setState({ offset: offset }, () => {
+      this.props.fetchParks(this.state.perPage, offset)
+    })
   }
 
   render() {
@@ -68,6 +73,19 @@ class ParksContainer extends Component {
         </h2>
         <ul>
           {this.renderParkCards()}
+          <ReactPaginate
+            previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={this.state.pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={this.handlePageClick}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'}
+          />
         </ul>
       </div >
     )

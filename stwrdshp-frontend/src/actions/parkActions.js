@@ -19,14 +19,16 @@ export const resetParkCards = (parks) => ({
 })
 
 // Async stuff
-export const fetchParks = () => {
+export const fetchParks = (perPage, offset) => {
   return (dispatch) => {
     dispatch({ type: "LOADING" })
     fetch('http://localhost:3000/parks')
       .then((parks) => {
         return parks.json()
       })
-      .then((parks) => {
+      .then((data) => {
+        let parks
+        parks = data.slice(offset, offset + perPage)
         dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
       })
   }
