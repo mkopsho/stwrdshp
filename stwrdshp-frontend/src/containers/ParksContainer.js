@@ -36,6 +36,10 @@ class ParksContainer extends Component {
       }
     }
     return this.props.parks.filteredList.map((park, index) => {
+      console.log(park.image)
+      if (park.image === null) {
+        park.image = "../../stwrdshp_placeholder.jpg"
+      }
       return <ParkCard handleLikedPark={this.handleLikedPark} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
     })
   }

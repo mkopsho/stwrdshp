@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const ParkCard = (props) => {
   let overlay
-  if (localStorage.logged_in) { // TODO: use Redux
+  if (localStorage.logged_in) {
     if (props.liked) {
       overlay = (
         <div>

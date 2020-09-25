@@ -18,6 +18,9 @@ export default class Park extends Component {
       })
       .then((park) => {
         console.log(park)
+        if (park.image === null) {
+          park.image = "../../stwrdshp_placeholder.jpg"
+        }
         this.setState({
           parkId: park.id,
           parkName: park.name,

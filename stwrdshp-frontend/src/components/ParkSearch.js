@@ -9,7 +9,6 @@ export default class ParkSearch extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault()
-    // TODO: use Redux
     this.props.renderParkCards(this.state)
     this.setState({
       stateCode: '',

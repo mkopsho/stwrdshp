@@ -16,7 +16,7 @@ namespace :db do
       if data["images"][0]
         image = data["images"][0]["url"]
       end
-      Park.create(name: data["fullName"], description: data["description"], state: data["states"].split(",").first, image: image)
+      Park.find_or_create_by(name: data["fullName"], description: data["description"], state: data["states"].split(",").first, image: image)
     end
   end
 end
