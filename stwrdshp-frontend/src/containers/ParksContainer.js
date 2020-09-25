@@ -30,11 +30,9 @@ class ParksContainer extends Component {
 
     if (searchObj) {
       if (searchObj.stateCode) {
-        //let renderedParks = this.props.parks.parks.filter((park) => park.state.includes(searchObj.stateCode))
         this.props.fetchParksByState(searchObj.stateCode)
       }
       if (searchObj.parkName) {
-        // let renderedParks = this.props.parks.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
         this.props.fetchParksByName(searchObj.parkName)
       }
     }
