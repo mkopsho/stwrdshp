@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import ParkCard from '../components/ParkCard'
+// import ParkCard from '../components/ParkCard'
 import ParkSearch from '../components/ParkSearch'
 import { connect } from 'react-redux'
 import { fetchParks, handleLikedPark, searchParksByName, searchParksByState, resetParkCards } from '../actions/parkActions'
+import { Suspense } from 'react';
+
+const ParkCard = React.lazy(() => import('../components/ParkCard'))
 
 class ParksContainer extends Component {
   state = {
@@ -40,7 +43,9 @@ class ParksContainer extends Component {
       if (park.image === null) {
         park.image = "../../stwrdshp_placeholder.jpg"
       }
-      return <ParkCard handleLikedPark={this.handleLikedPark} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+      return <Suspense fallback={<div>Loading...</div>}>
+        <ParkCard handleLikedPark={this.handleLikedPark} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+      </Suspense>
     })
   }
 
