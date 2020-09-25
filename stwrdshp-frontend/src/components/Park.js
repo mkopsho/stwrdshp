@@ -5,7 +5,8 @@ export default class Park extends Component {
     parkId: '',
     parkName: '',
     stateCode: '',
-    imgUrl: ''
+    imgUrl: '',
+    description: ''
   }
 
   componentDidMount() {
@@ -21,7 +22,8 @@ export default class Park extends Component {
           parkId: park.id,
           parkName: park.name,
           stateCode: park.state,
-          imgUrl: park.image
+          imgUrl: park.image,
+          description: park.description
         })
       })
   }
@@ -34,16 +36,10 @@ export default class Park extends Component {
         </h3>
         <ul>
           <li>
-            State: {this.state.stateCode}
+            <strong>State: </strong>{this.state.stateCode}
           </li>
           <li>
-            Location:
-          </li>
-          <li>
-            Site:
-          </li>
-          <li>
-            Other stuff (placeholder)
+            <strong>Description: </strong>{this.state.description}
           </li>
           <img src={this.state.imgUrl} alt={"Image of " + this.state.imgUrl}></img>
         </ul>

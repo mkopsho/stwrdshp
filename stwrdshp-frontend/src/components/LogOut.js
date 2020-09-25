@@ -22,7 +22,6 @@ class LogOut extends Component {
     )
   }
 }
-// return <Redirect to='/' />
 
 const mapStateToProps = (state) => {
   return state
