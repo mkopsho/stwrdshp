@@ -25,14 +25,16 @@ class LikesContainer extends Component {
 
   render() {
     return (
-      <div>
-        <h1>
-          Likes
-        </h1>
-        <ul>
-          {this.renderLikedParks()}
-        </ul>
-      </div >
+      <section className="section mt-4">
+        <div className="container">
+          <h1 className="title">
+            Likes
+          </h1>
+          <ul>
+            {this.renderLikedParks()}
+          </ul>
+        </div>
+      </section>
     )
   }
 }

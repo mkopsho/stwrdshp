@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { logOutUser } from '../actions/userActions'
 
 class LogOut extends Component {
-  handleOnSubmit = (event) => {
-    event.preventDefault()
+  handleOnClick = () => {
     if (localStorage["token"]) {
       this.props.logOutUser()
       this.props.history.push("/")
@@ -18,7 +17,7 @@ class LogOut extends Component {
           <h1 className="title">
             Are you sure?
           </h1>
-          <input type="submit" value="Yes, get me outta here" onClick={this.handleOnSubmit}></input>
+          <button className="button is-danger" onClick={this.handleOnClick}>Yes, get me outta here!</button>
         </div>
       </section>
     )

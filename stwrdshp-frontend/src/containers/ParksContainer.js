@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ParkCard from '../components/ParkCard'
 import ParkSearch from '../components/ParkSearch'
 import { connect } from 'react-redux'
-import { fetchParks, handleLikedPark, searchParksByName, searchParksByState, resetParkCards } from '../actions/parkActions'
+import { fetchParks, fetchParksByName, fetchParksByState, handleLikedPark, resetParkCards } from '../actions/parkActions'
 import ReactPaginate from 'react-paginate'
 
 class ParksContainer extends Component {
@@ -13,7 +13,8 @@ class ParksContainer extends Component {
     parkName: '',
     loadingParks: false,
     perPage: 20,
-    offset: 0
+    offset: 0,
+    pageCount: 25
   }
 
   componentDidMount() {
@@ -24,17 +25,17 @@ class ParksContainer extends Component {
   renderParkCards = (searchObj) => {
     console.log(this.props)
     if (this.props.parks.loadingParks) {
-      return <h2>Loading Parks...</h2>
+      return <h4 className="title is-4">Loading Parks...</h4>
     }
 
     if (searchObj) {
       if (searchObj.stateCode) {
-        let renderedParks = this.props.parks.parks.filter((park) => park.state.includes(searchObj.stateCode))
-        this.props.searchParksByState(renderedParks)
+        //let renderedParks = this.props.parks.parks.filter((park) => park.state.includes(searchObj.stateCode))
+        this.props.fetchParksByState(searchObj.stateCode)
       }
       if (searchObj.parkName) {
-        let renderedParks = this.props.parks.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
-        this.props.searchParksByName(renderedParks)
+        // let renderedParks = this.props.parks.parks.filter((park) => park.name.toLowerCase().includes(searchObj.parkName.toLowerCase()))
+        this.props.fetchParksByName(searchObj.parkName)
       }
     }
     return this.props.parks.filteredList.map((park, index) => {
@@ -46,7 +47,7 @@ class ParksContainer extends Component {
   }
 
   resetParkCards = () => {
-    this.props.resetParkCards(this.props.parks.parks)
+    this.props.fetchParks(this.state.perPage, this.state.offset)
   }
 
   handleLikedPark = (parkId) => {
@@ -100,4 +101,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchParks, handleLikedPark, searchParksByName, searchParksByState, resetParkCards })(ParksContainer)
+export default connect(mapStateToProps, { fetchParks, fetchParksByName, fetchParksByState, handleLikedPark, resetParkCards })(ParksContainer)

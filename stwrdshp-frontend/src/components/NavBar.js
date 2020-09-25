@@ -4,19 +4,30 @@ import { connect } from 'react-redux'
 
 const NavBar = () => {
   let userNavDisplay
+  let likesDisplay
   if (localStorage.getItem("username")) {
+    likesDisplay = (
+      <NavLink className="navbar-item" to="/likes">Likes</NavLink>
+    )
     userNavDisplay = (
-      <>
-        <NavLink className="navbar-item" to="/logout">Log Out</NavLink>
-        <NavLink className="navbar-item" to="/likes">Likes</NavLink>
-      </>
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            <NavLink className="button is-light is-info" to="/logout">Log Out</NavLink>
+          </div>
+        </div>
+      </div>
     )
   } else {
     userNavDisplay = (
-      <>
-        <NavLink className="navbar-item" to="/login">Log In</NavLink>
-        <NavLink className="navbar-item" to="/signup">Sign Up</NavLink>
-      </>
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            <NavLink className="button is-info" to="/signup">Sign Up</NavLink>
+            <NavLink className="button is-light is-info" to="/login">Log In</NavLink>
+          </div>
+        </div>
+      </div>
     )
   }
 
@@ -29,8 +40,9 @@ const NavBar = () => {
               <NavLink className="navbar-item" to="/">Home</NavLink>
               <NavLink className="navbar-item" to="/about">About</NavLink>
               <NavLink className="navbar-item" to="/parks">Parks</NavLink>
-              {userNavDisplay}
+              {likesDisplay}
             </div>
+            {userNavDisplay}
           </div>
         </div>
       </nav>

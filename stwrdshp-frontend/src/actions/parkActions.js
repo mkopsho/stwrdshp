@@ -3,16 +3,6 @@ export const gotParks = (parks) => ({
   payload: parks
 })
 
-export const searchParksByName = (renderedParks) => ({
-  type: "SEARCH_PARKS_BY_NAME",
-  payload: renderedParks
-})
-
-export const searchParksByState = (renderedParks) => ({
-  type: "SEARCH_PARKS_BY_STATE",
-  payload: renderedParks
-})
-
 export const resetParkCards = (parks) => ({
   type: "RESET_PARK_CARDS",
   payload: parks
@@ -29,6 +19,37 @@ export const fetchParks = (perPage, offset) => {
       .then((data) => {
         let parks
         parks = data.slice(offset, offset + perPage)
+        dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
+      })
+  }
+}
+
+export const fetchParksByName = (name) => {
+  return (dispatch) => {
+    dispatch({ type: "LOADING" })
+    fetch('http://localhost:3000/parks')
+      .then((parks) => {
+        return parks.json()
+      })
+      .then((data) => {
+        let parks
+        parks = data.filter((park) => park.name.toLowerCase().includes(name))
+        dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
+      })
+  }
+}
+
+export const fetchParksByState = (stateCode) => {
+  return (dispatch) => {
+    dispatch({ type: "LOADING" })
+    fetch('http://localhost:3000/parks')
+      .then((parks) => {
+        return parks.json()
+      })
+      .then((data) => {
+        let parks
+        parks = data.filter((park) => park.state == stateCode)
+        debugger
         dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
       })
   }
