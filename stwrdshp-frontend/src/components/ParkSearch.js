@@ -31,9 +31,6 @@ export default class ParkSearch extends Component {
   render() {
     return (
       <div>
-        <h3>
-          Parks Search Bar
-        </h3>
         <form onSubmit={this.handleOnSubmit}>
           <label htmlFor="search-states">Search Parks by State: </label>
           <select id="search-states" name="stateCode" value={this.state.stateCode} onChange={this.handleOnChange}>

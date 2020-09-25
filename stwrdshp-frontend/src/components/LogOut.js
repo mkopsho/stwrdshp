@@ -13,12 +13,14 @@ class LogOut extends Component {
 
   render() {
     return (
-      <div>
-        <h3>
-          Are you sure?
-        </h3>
-        <input type="submit" value="Yes, get me outta here" onClick={this.handleOnSubmit}></input>
-      </div>
+      <section className="section mt-4">
+        <div className="container">
+          <h1 className="title">
+            Are you sure?
+          </h1>
+          <input type="submit" value="Yes, get me outta here" onClick={this.handleOnSubmit}></input>
+        </div>
+      </section>
     )
   }
 }

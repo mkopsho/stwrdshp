@@ -64,30 +64,34 @@ class ParksContainer extends Component {
 
   render() {
     return (
-      <div>
-        <h1>
-          Parks
-        </h1>
-        <h2>
-          <ParkSearch renderParkCards={this.renderParkCards} resetParkCards={this.resetParkCards} />
-        </h2>
-        <ul>
-          {this.renderParkCards()}
-          <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={this.state.pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={this.handlePageClick}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'active'}
-          />
-        </ul>
-      </div >
+      <section className="section mt-4">
+        <div className="container">
+          <h1 className="title">
+            Parks
+          </h1>
+          <div>
+            <ParkSearch renderParkCards={this.renderParkCards} resetParkCards={this.resetParkCards} />
+          </div>
+          <div>
+            <ReactPaginate
+              previousLabel={'previous'}
+              nextLabel={'next'}
+              breakLabel={'...'}
+              breakClassName={'break-me'}
+              pageCount={this.state.pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handlePageClick}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'}
+            />
+          </div>
+          <ul>
+            {this.renderParkCards()}
+          </ul>
+        </div>
+      </section>
     )
   }
 }

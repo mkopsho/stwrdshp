@@ -7,40 +7,34 @@ const NavBar = () => {
   if (localStorage.getItem("username")) {
     userNavDisplay = (
       <>
-        <li>
-          <NavLink to="/logout">Log Out</NavLink>
-        </li>
-        <li>
-          <NavLink to="/likes">Likes</NavLink>
-        </li>
+        <NavLink className="navbar-item" to="/logout">Log Out</NavLink>
+        <NavLink className="navbar-item" to="/likes">Likes</NavLink>
       </>
     )
   } else {
     userNavDisplay = (
       <>
-        <li>
-          <NavLink to="/login">Log In</NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </li>
+        <NavLink className="navbar-item" to="/login">Log In</NavLink>
+        <NavLink className="navbar-item" to="/signup">Sign Up</NavLink>
       </>
     )
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/about">About</NavLink>
-      </li>
-      <li>
-        <NavLink to="/parks">Parks</NavLink>
-      </li>
-      {userNavDisplay}
-    </ul>
+    <div>
+      <nav className="navbar has-shadow is-transparen is-fixed-top">
+        <div className="container">
+          <div className="navbar-menu">
+            <div className="navbar-start">
+              <NavLink className="navbar-item" to="/">Home</NavLink>
+              <NavLink className="navbar-item" to="/about">About</NavLink>
+              <NavLink className="navbar-item" to="/parks">Parks</NavLink>
+              {userNavDisplay}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
   )
 }
 
