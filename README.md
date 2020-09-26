@@ -22,9 +22,9 @@ Then generate a random string:
 ```
 ruby -e "require 'securerandom'; puts SecureRandom.hex"
 ```
-Paste the output of the above command into your `.env` file and assign it to a `SESSION_SECRET` variable, **without quotes**, e.g.:
+Paste the output of the above command into your `.env` file and assign it to a `JWT_KEY` variable, **without quotes**, e.g.:
 ```
-JWT_KEY=7b49a653d252d97eb156f7ee0409c5c8
+JWT_KEY=ca76e6045a21bfc490f59b7725f51967
 ```
 
 #### NPS API Key
