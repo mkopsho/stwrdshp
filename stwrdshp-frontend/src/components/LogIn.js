@@ -28,7 +28,7 @@ class LogIn extends Component {
         <div className="hero-body">
           <div className="container has-text-centered">
             <h1 className="title">
-              Log In Page
+              Log In
             </h1>
             <form onSubmit={this.handleOnSubmit}>
               Username: <input type="text" name="username" value={this.state.value} onChange={this.handleOnChange}></input><br></br>

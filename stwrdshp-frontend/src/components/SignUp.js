@@ -30,7 +30,7 @@ class SignUp extends Component {
         <div className="hero-body">
           <div className="container has-text-centered">
             <h1 className="title">
-              Sign Up Page
+              Sign Up
           </h1>
             <form onSubmit={this.handleOnSubmit}>
               <strong>Username: </strong><input type="text" name="username" value={this.state.value} onChange={this.handleOnChange}></input><br></br>
