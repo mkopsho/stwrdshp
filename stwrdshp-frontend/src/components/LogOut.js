@@ -12,12 +12,14 @@ class LogOut extends Component {
 
   render() {
     return (
-      <section className="section mt-4">
-        <div className="container">
-          <h1 className="title">
-            Are you sure?
+      <section className="hero is-fullheight is-primary has-bg-img-logout">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title">
+              Are you sure?
           </h1>
-          <button className="button is-danger" onClick={this.handleOnClick}>Yes, get me outta here!</button>
+            <button className="button is-danger" onClick={this.handleOnClick}>Yes, get me outta here!</button>
+          </div>
         </div>
       </section>
     )

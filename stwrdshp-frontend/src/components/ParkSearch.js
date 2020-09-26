@@ -32,7 +32,7 @@ export default class ParkSearch extends Component {
       <div>
         <div className="container">
           <form onSubmit={this.handleOnSubmit}>
-            <div class="field has-addons">
+            <div className="field has-addons">
               <div className="control">
                 <div className="select">
                   <select id="search-states" name="stateCode" value={this.state.stateCode} onChange={this.handleOnChange}>
@@ -91,7 +91,7 @@ export default class ParkSearch extends Component {
                   </select>
                 </div>
               </div>
-              <div class="control">
+              <div className="control">
                 <button className="button is-info" type="submit">Search by State</button>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default class ParkSearch extends Component {
 
         <div className="container">
           <form onSubmit={this.handleOnSubmit}>
-            <div class="field has-addons mt-4">
+            <div className="field has-addons mt-4">
               <div className="control">
                 <div className="field">
                   <input className="input" placeholder="Park Name" type="text" name="parkName" value={this.state.parkName} onChange={this.handleOnChange}></input>

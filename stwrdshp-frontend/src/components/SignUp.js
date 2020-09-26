@@ -26,17 +26,19 @@ class SignUp extends Component {
 
   render() {
     return (
-      <section className="section mt-4">
-        <div className="container">
-          <h1 className="title">
-            Sign Up Page
+      <section className="hero is-fullheight is-light has-bg-img-signup">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title">
+              Sign Up Page
           </h1>
-          <form onSubmit={this.handleOnSubmit}>
-            Username: <input type="text" name="username" value={this.state.value} onChange={this.handleOnChange}></input>
-            Email: <input type="text" name="email" value={this.state.value} onChange={this.handleOnChange}></input>
-            Password: <input type="password" name="password" value={this.state.value} onChange={this.handleOnChange}></input>
-            <input type="submit"></input>
-          </form>
+            <form onSubmit={this.handleOnSubmit}>
+              <strong>Username: </strong><input type="text" name="username" value={this.state.value} onChange={this.handleOnChange}></input><br></br>
+              <strong>Email: </strong><input type="text" name="email" value={this.state.value} onChange={this.handleOnChange}></input><br></br>
+              <strong>Password: </strong><input type="password" name="password" value={this.state.value} onChange={this.handleOnChange}></input><br></br>
+              <input type="submit"></input>
+            </form>
+          </div>
         </div>
       </section >
     )

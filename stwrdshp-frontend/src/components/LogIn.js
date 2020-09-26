@@ -24,16 +24,18 @@ class LogIn extends Component {
 
   render() {
     return (
-      <section className="section mt-4">
-        <div className="container">
-          <h1 className="title">
-            Log In Page
-        </h1>
-          <form onSubmit={this.handleOnSubmit}>
-            Username: <input type="text" name="username" value={this.state.value} onChange={this.handleOnChange}></input>
-            Password: <input type="password" name="password" value={this.state.value} onChange={this.handleOnChange}></input>
-            <input type="submit"></input>
-          </form>
+      <section className="hero is-fullheight is-primary has-bg-img-login">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title">
+              Log In Page
+            </h1>
+            <form onSubmit={this.handleOnSubmit}>
+              Username: <input type="text" name="username" value={this.state.value} onChange={this.handleOnChange}></input><br></br>
+              Password: <input type="password" name="password" value={this.state.value} onChange={this.handleOnChange}></input><br></br>
+              <input type="submit"></input>
+            </form>
+          </div>
         </div>
       </section >
     )

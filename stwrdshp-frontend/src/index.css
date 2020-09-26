@@ -60,14 +60,41 @@ img {
 }
  
 .pagination .active a {
-  background-color: #47ccde ;
-  border-color: #47ccde ;
+  background-color: #47ccde;
+  border-color: #47ccde;
   color: #fff;
 } 
 
 .pagination li a {
-  border: 1px solid #47ccde ;
+  border: 1px solid #47ccde;
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
 }
+
+/* Background images */
+.has-bg-img-home { 
+  background: url('./images/bg-home.jpg') center center; 
+  background-size: cover; 
+}
+
+.has-bg-img-about {
+  background: url('./images/bg-about.jpg') center center; 
+  background-size: cover; 
+}
+
+.has-bg-img-logout {
+  background: url('./images/bg-logout.jpg') center center; 
+  background-size: cover; 
+}
+
+.has-bg-img-signup {
+  background: url('./images/bg-signup.jpg') center center; 
+  background-size: cover;
+}
+
+.has-bg-img-login {
+  background: url('./images/bg-login.jpg') center center; 
+  background-size: cover;
+}
+
