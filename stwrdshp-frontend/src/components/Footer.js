@@ -21,7 +21,7 @@ const Footer = (props) => {
   } else {
     return (
       <footer class="footer">
-        <div style={{ position: 'fixed', bottom: '0' }} className="container has-text-centered">
+        <div className="container has-text-centered">
           STWRDSHP by <a href="https://kopsho.cafe"> Michael Kopsho</a>.
       </div>
       </footer>
