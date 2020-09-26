@@ -73,7 +73,7 @@ class ParksContainer extends Component {
             <ParkSearch renderParkCards={this.renderParkCards} resetParkCards={this.resetParkCards} />
           </div>
           <div>
-            <nav class="pagination" role="navigation" aria-label="pagination">
+            <nav className="pagination" role="navigation" aria-label="pagination">
               <ReactPaginate
                 previousLabel={'previous'}
                 nextLabel={'next'}
@@ -89,9 +89,13 @@ class ParksContainer extends Component {
               />
             </nav>
           </div>
-          <ul>
-            {this.renderParkCards()}
-          </ul>
+          <section className="section mt-4">
+            <div className="container">
+              <ul>
+                {this.renderParkCards()}
+              </ul>
+            </div>
+          </section>
         </div>
       </section>
     )

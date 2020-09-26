@@ -1,23 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Footer = () => {
+const Footer = (props) => {
+  if (props.location.pathname === "/parks" || props.location.pathname === "/likes") {
+    return null
+  }
   if (localStorage.getItem("username")) {
     return (
       <>
-        <div className="container has-text-centered">
-          Logged in as {localStorage.getItem("username")}
+        <footer className="footer">
+          <div className="container has-text-centered">
+            Logged in as {localStorage.getItem("username")}
+          </div>
+          <div className="container has-text-centered">
+            STWRDSHP by <a href="https://kopsho.cafe">Michael Kopsho</a>.
         </div>
-        <div className="container has-text-centered">
-          STWRDSHP by <a href="https://kopsho.cafe">Michael Kopsho</a>.
-        </div>
+        </footer>
       </>
     )
   } else {
     return (
-      <div className="container has-text-centered">
-        STWRDSHP by < a href="https://kopsho.cafe"> Michael Kopsho</a>.
+      <footer class="footer">
+        <div style={{ position: 'fixed', bottom: '0' }} className="container has-text-centered">
+          STWRDSHP by <a href="https://kopsho.cafe"> Michael Kopsho</a>.
       </div>
+      </footer>
     )
   }
 }
