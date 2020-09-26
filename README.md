@@ -46,7 +46,7 @@ To load the backend database with [NPS](https://www.nps.gov/index.htm) data, run
 ```
 rake db:load
 ```
-This make take a few seconds as it's creating a new `Park` record for every national park in the United States.
+This will take a few seconds as it's creating a new `Park` record for every national park in the United States.
 
 Now we can start the server:
 ```
