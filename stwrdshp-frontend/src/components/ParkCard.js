@@ -17,7 +17,7 @@ const ParkCard = (props) => {
       overlay = (
         <div>
           {props.name} | {props.state}
-          <p onClick={() => props.handleLikedPark(props.id)}>
+          <p onClick={(event) => props.handleLikedPark(event, props.id)}>
             ☆
         </p>
         </div>

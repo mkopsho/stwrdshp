@@ -14,9 +14,13 @@ class LikesContainer extends Component {
   }
 
   renderLikedParks = () => {
-    return this.props.likes.likedParks.map((park, index) => {
-      return <ParkCard handleUnlikedPark={this.handleUnlikedPark} liked={true} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
-    })
+    if (this.props.likes.likedParks.length === 0) {
+      return <h2>You haven't liked any parks yet.</h2>
+    } else {
+      return this.props.likes.likedParks.map((park, index) => {
+        return <ParkCard handleUnlikedPark={this.handleUnlikedPark} liked={true} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
+      })
+    }
   }
 
   handleUnlikedPark = (parkId) => {

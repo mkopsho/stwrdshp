@@ -48,8 +48,9 @@ class ParksContainer extends Component {
     this.props.fetchParks(this.state.perPage, this.state.offset)
   }
 
-  handleLikedPark = (parkId) => {
+  handleLikedPark = (event, parkId) => {
     this.props.handleLikedPark(parkId)
+    event.target.innerHTML = "★"
   }
 
   handlePageClick = (data) => {
