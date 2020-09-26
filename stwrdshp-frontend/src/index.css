@@ -54,19 +54,19 @@ img {
  }
 
 /* Pagination buttons */
- .pagination {
+ .pagination-list {
   margin: 15px auto;
   display: flex;
 }
  
-.pagination .active a {
-  background-color: #47ccde;
-  border-color: #47ccde;
+.pagination-list .active a {
+  background-color:hsl(217, 71%, 53%);
+  border-color: hsl(217, 71%, 53%);
   color: #fff;
 } 
 
-.pagination li a {
-  border: 1px solid #47ccde;
+.pagination-list li a {
+  border: 1px solid hsl(217, 71%, 53%);
   padding: 5px 10px;
   outline: none;
   cursor: pointer;

@@ -73,19 +73,21 @@ class ParksContainer extends Component {
             <ParkSearch renderParkCards={this.renderParkCards} resetParkCards={this.resetParkCards} />
           </div>
           <div>
-            <ReactPaginate
-              previousLabel={'previous'}
-              nextLabel={'next'}
-              breakLabel={'...'}
-              breakClassName={'break-me'}
-              pageCount={this.state.pageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={this.handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'}
-            />
+            <nav class="pagination" role="navigation" aria-label="pagination">
+              <ReactPaginate
+                previousLabel={'previous'}
+                nextLabel={'next'}
+                breakLabel={'...'}
+                breakClassName={'break-me'}
+                pageCount={this.state.pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={this.handlePageClick}
+                containerClassName={'pagination-list'}
+                subContainerClassName={'pages pagination'}
+                activeClassName={'active'}
+              />
+            </nav>
           </div>
           <ul>
             {this.renderParkCards()}

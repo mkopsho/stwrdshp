@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import About from './components/About'
-import Header from './components/Header'
+import Footer from './components/Footer'
 import Home from './components/Home'
 import LikesContainer from './containers/LikesContainer'
 import LogIn from './components/LogIn'
@@ -17,7 +17,6 @@ function App() {
     <Router>
       <div>
         <NavBar />
-        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
@@ -28,6 +27,7 @@ function App() {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/logout" component={LogOut} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   )
