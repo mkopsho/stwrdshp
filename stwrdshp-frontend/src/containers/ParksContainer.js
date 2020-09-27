@@ -54,8 +54,8 @@ class ParksContainer extends Component {
   }
 
   handlePageClick = (data) => {
-    let selected = data.selected;
-    let offset = Math.ceil(selected * this.state.perPage);
+    let selected = data.selected
+    let offset = Math.ceil(selected * this.state.perPage)
 
     this.setState({ offset: offset }, () => {
       this.props.fetchParks(this.state.perPage, offset)
