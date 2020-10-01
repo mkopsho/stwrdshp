@@ -9,7 +9,7 @@ Rails.application.load_tasks
 namespace :db do
   desc "Loads all NPS parks into the database."
   task :load => :environment do
-    uri = URI.parse('https://developer.nps.gov/api/v1/parks?api_key=eucnhNo81VauxloY6tcZF41iFh5AUkofsEqeIW2x&limit=700')
+    uri = URI.parse('https://developer.nps.gov/api/v1/parks?api_key=[YOUR_API_KEY]&limit=700')
     response = Net::HTTP.get_response(uri)
     body = JSON.parse(response.body)
     body["data"].each do |data|
