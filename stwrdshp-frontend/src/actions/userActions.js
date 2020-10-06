@@ -34,11 +34,15 @@ export const createUser = (username, email, password) => {
     })
       .then(response => response.json())
       .then(userData => {
+        console.log(userData)
         localStorage.setItem("token", userData.jwt)
         localStorage.setItem("username", userData.user.username)
         localStorage.setItem("id", userData.user.id)
         localStorage.setItem("logged_in", true)
         dispatch(logInTheUser())
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 }
@@ -64,6 +68,9 @@ export const logInUser = (username, password) => {
         localStorage.setItem("id", userData.user.id)
         localStorage.setItem("logged_in", true)
         dispatch(logInTheUser())
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 }

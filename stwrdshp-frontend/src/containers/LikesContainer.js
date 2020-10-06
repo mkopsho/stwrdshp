@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 import { fetchLikes, handleUnlikedPark } from '../actions/likeActions'
 
 class LikesContainer extends Component {
-  state = {
-    likedParks: []
-  }
 
   componentDidMount() {
     let user_id = localStorage.getItem("id")
@@ -14,10 +11,10 @@ class LikesContainer extends Component {
   }
 
   renderLikedParks = () => {
-    if (this.props.likes.likedParks.length === 0) {
-      return <h2>You haven't liked any parks yet.</h2>
+    if (this.props.likedParks.length === 0) {
+      return <h2>You haven't liked any parks.</h2>
     } else {
-      return this.props.likes.likedParks.map((park, index) => {
+      return this.props.likedParks.map((park, index) => {
         return <ParkCard handleUnlikedPark={this.handleUnlikedPark} liked={true} name={park.name} img={park.image} state={park.state} id={park.id} key={index} />
       })
     }
@@ -44,7 +41,7 @@ class LikesContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return state.likes
 }
 
 export default connect(mapStateToProps, { fetchLikes, handleUnlikedPark })(LikesContainer)

@@ -18,6 +18,9 @@ export const fetchLikes = (user_id) => {
       .then((likes) => {
         dispatch(gotLikes(likes))
       })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
 
@@ -37,6 +40,9 @@ export const handleUnlikedPark = (parkId) => {
       .then(response => response.json())
       .then((likes) => {
         dispatch(deleteLike(likes))
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 }

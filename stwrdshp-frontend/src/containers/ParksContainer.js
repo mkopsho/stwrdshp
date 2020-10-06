@@ -6,12 +6,8 @@ import { fetchParks, fetchParksByName, fetchParksByState, handleLikedPark, reset
 import ReactPaginate from 'react-paginate'
 
 class ParksContainer extends Component {
+  // keep local state for pagination
   state = {
-    // parks: [],
-    // filteredList: [],
-    // stateCode: '',
-    // parkName: '',
-    // loadingParks: false,
     perPage: 20,
     offset: 0,
     pageCount: 25

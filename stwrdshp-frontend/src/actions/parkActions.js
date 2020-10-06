@@ -21,6 +21,9 @@ export const fetchParks = (perPage, offset) => {
         parks = data.slice(offset, offset + perPage)
         dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
       })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
 
@@ -35,6 +38,9 @@ export const fetchParksByName = (name) => {
         let parks
         parks = data.filter((park) => park.name.toLowerCase().includes(name))
         dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 }
@@ -51,6 +57,9 @@ export const fetchParksByState = (stateCode) => {
         parks = data.filter((park) => park.state == stateCode)
         debugger
         dispatch(gotParks(parks)) // same as `dispatch({ type: "GOT_PARKS", payload: action.payload })`
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 }
@@ -71,6 +80,9 @@ export const handleLikedPark = (parkId) => {
       .then(response => response.json())
       .then(data => {
         console.log(data)
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 }
