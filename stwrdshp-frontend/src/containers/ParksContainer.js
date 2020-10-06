@@ -7,11 +7,11 @@ import ReactPaginate from 'react-paginate'
 
 class ParksContainer extends Component {
   state = {
-    parks: [],
-    filteredList: [],
-    stateCode: '',
-    parkName: '',
-    loadingParks: false,
+    // parks: [],
+    // filteredList: [],
+    // stateCode: '',
+    // parkName: '',
+    // loadingParks: false,
     perPage: 20,
     offset: 0,
     pageCount: 25
@@ -24,7 +24,7 @@ class ParksContainer extends Component {
 
   renderParkCards = (searchObj) => {
     console.log(this.props)
-    if (this.props.parks.loadingParks) {
+    if (this.props.loadingParks) {
       return <h4 className="title is-4">Loading Parks...</h4>
     }
 
@@ -36,7 +36,7 @@ class ParksContainer extends Component {
         this.props.fetchParksByName(searchObj.parkName)
       }
     }
-    return this.props.parks.filteredList.map((park, index) => {
+    return this.props.filteredList.map((park, index) => {
       if (park.image === null) {
         park.image = "../../stwrdshp_placeholder.jpg"
       }
@@ -103,7 +103,7 @@ class ParksContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return state.parks
 }
 
 export default connect(mapStateToProps, { fetchParks, fetchParksByName, fetchParksByState, handleLikedPark, resetParkCards })(ParksContainer)
