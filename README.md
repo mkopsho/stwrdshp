@@ -55,7 +55,11 @@ rails s
 This will start a Rails web server at [http://localhost:3000](http://localhost:3000). Keep this running in a terminal window.
 
 ### React frontend
-Navigate to the `stwrdshp-frontend` directory and run the frontend server:
+Navigate to the `stwrdshp-frontend` directory and install dependencies: 
+```
+npm install
+```
+Then run the frontend server:
 ```
 npm start
 ```
